@@ -1,10 +1,16 @@
+package tda;
+
+import Implementaciones.ColaPrioridad;
+import implementacion.ColaID;
+import programa.Pokemon;
+import programa.TIPO;
 
 public interface TDAPokedex {
 
 	//Inicializa la estruc
 	//PRE: - 
 	//POS: estruc inic
-	public TDAPokedex Inicializar();
+	public void Inicializar();
 	
 	//Agrega un pokemon a la estruc
 	//PRE: estruc inic
@@ -19,5 +25,6 @@ public interface TDAPokedex {
 	//Recupera todos los pokemones del tipo pasado por parametro
 	//PRE: estruc inic
 	//POS: -
-	public <TIPO> ColaPrioridadTDA Recuperar(TIPO t);
+	public ColaPrioridad<Pokemon> Recuperar(TIPO t);
+	
 }
