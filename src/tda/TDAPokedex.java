@@ -2,6 +2,7 @@ package tda;
 
 import Implementaciones.ColaPrioridad;
 import implementacion.ColaID;
+import programa.NodoPokemonABB;
 import programa.Pokemon;
 import programa.TIPO;
 
@@ -26,5 +27,11 @@ public interface TDAPokedex {
 	//PRE: estruc inic
 	//POS: -
 	public ColaPrioridad<Pokemon> Recuperar(TIPO t);
+
+	public NodoPokemonABB getRaiz();
+	
+	public TDAPokedex getRaizTDA();
+	
+	public TIPO getTipo();
 	
 }

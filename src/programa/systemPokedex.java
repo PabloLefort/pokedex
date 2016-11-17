@@ -2,34 +2,36 @@ package programa;
 
 import Implementaciones.ColaPrioridad;
 import implementacion.ColaID;
-import implementacion.pokemonID;
+import implementacion.Pokedex;
+import tda.ColaTDA;
 import tda.TDAPokedex;
 
 public class systemPokedex {
-	private pokemonID poke;
+	private Pokedex poke;
 
 	public static void main(String[] args) {
 		
 	}
 
 	
-	public systemPokedex(pokemonID poke) {
+	public systemPokedex(Pokedex poke) {
 		super();
-		this.poke = new pokemonID();
+		this.poke = new Pokedex();
 		poke.Inicializar();
-		
+	}
+	
+	private TDAPokedex buscarTDA(TIPO t, TDAPokedex p){
+		int aux = p.getTipo().compareTo(t);
+		if(aux == 0)
+			return p;
+		else if(aux > 0)
+			return buscarTDA(t, p.getRaiz().getHijoDer());
+		else
+			return buscarTDA(t, p.getRaiz().getHijoIzq());
 	}
 
 	public ColaID OrdenarPokemones(TIPO t, String criterio){
-		pokemonID raiz = poke.getRaiz();
-		int aux = raiz.getEspecie().compareTo(t);
-		while(aux != 0){
-			if(aux > 0){
-				aux = raiz.getHijoDer().getTipo()
-			} else {
-				//izq
-			}
-		}
+		TDAPokedex raiz = this.buscarTDA(t, poke.getRaizTDA());
 		ColaID pokemones = new ColaID();
 		switch (criterio) {
 			case "Nombre":

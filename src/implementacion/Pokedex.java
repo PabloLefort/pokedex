@@ -6,7 +6,7 @@ import programa.Pokemon;
 import programa.TIPO;
 import tda.TDAPokedex;
 
-public class pokemonID implements TDAPokedex{
+public class Pokedex implements TDAPokedex{
 	NodoPokemonABB raiz;
 	
 	@Override
@@ -20,9 +20,9 @@ public class pokemonID implements TDAPokedex{
 			ColaPrioridad pokemones = new ColaPrioridad<Pokemon>();
 			pokemones.InicializarCola();
 			pokemones.AgregarElemento(p, p.getPuntosDeCombate());
-			TDAPokedex hijoDer = new pokemonID();
+			TDAPokedex hijoDer = new Pokedex();
 			hijoDer.Inicializar();
-			TDAPokedex hijoIzq = new pokemonID();
+			TDAPokedex hijoIzq = new Pokedex();
 			hijoIzq.Inicializar();
 			raiz = new NodoPokemonABB(p.getTipo(), pokemones, hijoIzq, hijoDer);
 		} else {
@@ -113,6 +113,7 @@ public class pokemonID implements TDAPokedex{
 		}
 	}
 
+	@Override
 	public NodoPokemonABB getRaiz() {
 		return raiz;
 	}
@@ -120,5 +121,11 @@ public class pokemonID implements TDAPokedex{
 	public TIPO getTipo(){
 		return raiz.getEspecie();
 	}
+
+	@Override
+	public TDAPokedex getRaizTDA() {
+		return this;
+	}
+
 
 }
